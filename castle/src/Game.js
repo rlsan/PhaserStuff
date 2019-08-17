@@ -24,11 +24,11 @@ BasicGame.Game.prototype = {
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-        fuck = this.add.sprite(30, 30, 'items', 5);
-        fuck.scale.setTo(2, 2);
-        fuck.frame = this.rnd.integerInRange(0, 95);
+        enemy = this.add.sprite(30, 30, 'items', 5);
+        enemy.scale.setTo(2, 2);
+        enemy.frame = this.rnd.integerInRange(0, 95);
 
-        this.physics.arcade.enable([fuck], Phaser.Physics.ARCADE);
+        this.physics.arcade.enable([enemy], Phaser.Physics.ARCADE);
 
         keys = this.input.keyboard.addKeys({
             'up': Phaser.KeyCode.W,
@@ -43,8 +43,8 @@ BasicGame.Game.prototype = {
 
     update: function() {
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        //fuck.x = this.world.centerX + Math.sin(this.time.now*.003)*300;
-        //fuck.y = this.world.centerY - Math.sin(this.time.now*.005)*300;
+        //enemy.x = this.world.centerX + Math.sin(this.time.now*.003)*300;
+        //enemy.y = this.world.centerY - Math.sin(this.time.now*.005)*300;
         maxVelocity = {
             x: 500,
             y: 1000
@@ -59,32 +59,32 @@ BasicGame.Game.prototype = {
         };
         jumpForce = 250;
 
-        fuck.body.maxVelocity = maxVelocity;
-        fuck.body.drag = drag;
-        fuck.body.collideWorldBounds = true;
+        enemy.body.maxVelocity = maxVelocity;
+        enemy.body.drag = drag;
+        enemy.body.collideWorldBounds = true;
 
         //  Up and down movement.
 
         if (keys.up.isDown && keys.down.isUp) {
-            fuck.body.acceleration.y = -acceleration.y;
+            enemy.body.acceleration.y = -acceleration.y;
         } else if (keys.down.isDown && keys.up.isUp) {
-            fuck.body.acceleration.y = acceleration.y;
+            enemy.body.acceleration.y = acceleration.y;
         } else {
-            fuck.body.acceleration.y = 0;
+            enemy.body.acceleration.y = 0;
         }
 
         //  Left and right movement.
 
         if (keys.left.isDown && keys.right.isUp) {
-            fuck.body.acceleration.x = -acceleration.x;
+            enemy.body.acceleration.x = -acceleration.x;
         } else if (keys.right.isDown && keys.left.isUp) {
-            fuck.body.acceleration.x = acceleration.x;
+            enemy.body.acceleration.x = acceleration.x;
         } else {
-            fuck.body.acceleration.x = 0;
+            enemy.body.acceleration.x = 0;
         }
 
         if (keys.jump.isDown) {
-            fuck.body.velocity.y = -jumpForce;
+            enemy.body.velocity.y = -jumpForce;
         }
 
     },

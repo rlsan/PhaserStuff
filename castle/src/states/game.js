@@ -44,18 +44,18 @@ BasicGame.Game.prototype = {
 
         player = new player(this.game, 1300, 800);
 
-        fuck = this.game.add.sprite(0, 100, 'items', 10);
-        fuck.frame = this.rnd.integerInRange(0, 420);
-        this.game.physics.arcade.enable(fuck, Phaser.Physics.ARCADE);
+        enemy = this.game.add.sprite(0, 100, 'items', 10);
+        enemy.frame = this.rnd.integerInRange(0, 420);
+        this.game.physics.arcade.enable(enemy, Phaser.Physics.ARCADE);
 
-        fuck.body.collideWorldBounds = true;
+        enemy.body.collideWorldBounds = true;
 
-        fuckVel = 100;
+        enemyVel = 100;
 
-        fuck.body.immovable = true;
-        fuck.body.bounce.y = .3;
+        enemy.body.immovable = true;
+        enemy.body.bounce.y = .3;
 
-        this.game.slopes.enable(fuck);
+        this.game.slopes.enable(enemy);
     },
 
     update: function() {
@@ -63,17 +63,17 @@ BasicGame.Game.prototype = {
 
         this.game.physics.arcade.collide(player, foreground);
 
-        this.game.physics.arcade.collide(fuck, foreground);
+        this.game.physics.arcade.collide(enemy, foreground);
 
-        fuck.body.velocity.x = fuckVel;
+        enemy.body.velocity.x = enemyVel;
 
-        if (fuck.body.blocked.right) {
-            fuckVel = -100;
-        } else if (fuck.body.blocked.left) {
-            fuckVel = 100;
+        if (enemy.body.blocked.right) {
+            enemyVel = -100;
+        } else if (enemy.body.blocked.left) {
+            enemyVel = 100;
         }
 
-        this.game.physics.arcade.collide(player, fuck, function(obj1, obj2) {
+        this.game.physics.arcade.collide(player, enemy, function(obj1, obj2) {
             obj1.colliding = true
             obj1.body.x += obj2.body.deltaX() * .01;
             //obj1.body.y += obj2.body.deltaY();

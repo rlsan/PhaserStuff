@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+    		<script src="../phaser/build/phaser.min.js"></script>
+		<script src="src/load.js"></script>
+		<script src="src/play.js"></script>
+
+		<script src="src/grid.js"></script>
+
+		<script src="src/man.js"></script>	
+		<script src="src/effects.js"></script>
+		<script src="src/utils.js"></script>	
+    		<style>
+    			body{margin:0; padding:0; background-color:darkgray; color:rgba(0,0,0,0);}
+    		</style>
+			
+		<script>
+
+			var loderunner = loderunner || {};
+			loderunner.game = new Phaser.Game(1920, 1080, Phaser.AUTO, "game");
+			loderunner.game.state.add("load",loderunner.load);
+			loderunner.game.state.add("play",loderunner.play);
+			loderunner.game.state.add("grid",loderunner.grid);
+			
+			loderunner.game.state.start("load");
+		</script>
+	</head>
+	<body>
+
+	<!-- real fuckin ideas over here -->
+
+	<!-- phonebooths that tell you things
+	no real music, just ambient sounds and some melodies
+	something that inflates your jumpsuit full of air for a moment -->
+
+	</body>
+</html>
